@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  TestAffirmation
+
+  Created by Fisenko Irina on 31.07.2024.
+  
+*/
+
+"selectCategoryLabel" = "Select category";
+"selectBackgroundColorLabel" = "Select background color";
+"selectGenderLabel" = "Select gender";
+
+"loveLabel" = "Love";
+"friendshipLabel" = "Friendship";
+
+"redLabel" = "Red";
+"blueLabel" = "Blue";
+
+"maleLabel" = "Male";
+"femaleLabel" = "Female";
+
+"categoryLabel" = "Category";
+"colorLabel" = "Background color";
+"genderLabel" = "Gender";
+"languageLabel" = "Selected language";
+"settingsLabel" = "Settings";

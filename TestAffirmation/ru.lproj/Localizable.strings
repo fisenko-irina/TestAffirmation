@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  TestAffirmation
+
+  Created by Fisenko Irina on 31.07.2024.
+  
+*/
+
+"selectCategoryLabel" = "Выберите категорию";
+"selectBackgroundColorLabel" = "Выберите цвет фона";
+"selectGenderLabel" = "Выберите пол";
+
+"loveLabel" = "Любовь";
+"friendshipLabel" = "Дружба";
+
+"redLabel" = "Красный";
+"blueLabel" = "Синий";
+
+"maleLabel" = "Мужской";
+"femaleLabel" = "Женский";
+
+"categoryLabel" = "Категория";
+"colorLabel" = "Цвет фона";
+"genderLabel" = "Пол";
+"languageLabel" = "Выбранный язык";
+"settingsLabel" = "Настройки";
+
