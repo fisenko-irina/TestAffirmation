@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SelectGender: View {
     
-    @EnvironmentObject private var coordinator: Coordinator
+    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
         VStack {
@@ -18,15 +19,14 @@ struct SelectGender: View {
                 .bold()
             
             VStack{
-                ForEach(Gender.allCases, id: \.self) { item in
+                ForEach(appViewModel.genders, id: \.self) { item in
                     showButton(text: item.localizedString()) {
                         coordinator.push(.main)
-                        UserDefaults.standard.set("\(item)", forKey: "selectedGender")
-                        UserDefaults.standard.set(true, forKey: "isLogin")
+                        appViewModel.selectedGender = item
+                        appViewModel.isOnboarded = true
                     }
                 }
             }
-
         }
         .padding()
     }

@@ -9,19 +9,14 @@ import SwiftUI
 import RealmSwift
 
 struct MainScreen: View {
-    var body: some View {
-        SliderView()
-    }
-}
-
-struct SliderView: View {
     
-    @EnvironmentObject private var coordinator: Coordinator
-    @ObservedObject private var viewModel = MainScreenViewModel()
+    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var appViewModel: AppViewModel
+    @StateObject private var viewModel = MainScreenViewModel()
     
     var body: some View {
         ZStack {
-            viewModel.selectColor().ignoresSafeArea()
+            appViewModel.backgroundColor.color.ignoresSafeArea()
             VStack(alignment: .trailing) {
                 Button {
                     coordinator.present(sheet: .settings)
@@ -34,8 +29,7 @@ struct SliderView: View {
                 
                 GeometryReader { proxy in
                     TabView {
-                        ForEach(viewModel.source, id: \.id) { item in
-                            Text("\(viewModel.chooseLanguage(item: item))")
+                        ForEach(viewModel.getArray(appViewModel.selectedCategory), id: \.self) { item in Text(viewModel.chooseLanguage(item: item))
                                 .font(.system(size: 26))
                                 .foregroundColor(.white)
                                 .frame(width: proxy.size.width, height: proxy.size.height)
@@ -53,8 +47,6 @@ struct SliderView: View {
         }
     }
 }
-
-
 
 #Preview {
     MainScreen()

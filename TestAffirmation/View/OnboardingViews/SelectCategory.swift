@@ -10,8 +10,8 @@ import RealmSwift
 
 struct SelectCategory: View {
     
-    @EnvironmentObject private var coordinator: Coordinator
-    @ObservedObject private var viewModel = AppViewModel()
+    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
         VStack {
@@ -20,13 +20,12 @@ struct SelectCategory: View {
                 .bold()
             
             VStack{
-                ForEach(Category.allCases, id: \.self) { item in
+                ForEach(appViewModel.categories, id: \.self) { item in
                     showButton(text: item.localizedString()) {
-                        UserDefaults.standard.set("\(item)", forKey: "selectedCategory")
+                        appViewModel.selectedCategory = item
                         coordinator.push(.selectBackgroundColor)
                     }
                 }
-                
             }
             .padding()
         }

@@ -10,9 +10,12 @@ import SwiftUI
 @main
 struct TestAffirmationApp: App {
     
+
+    
     var body: some Scene {
         WindowGroup {
             CoordinatorView()
+                
         }
     }
 }

@@ -7,16 +7,16 @@
 
 import Foundation
 import SwiftUI
+import RealmSwift
 
 final class MainScreenViewModel: ObservableObject {
     
-    @Published var source = Source.allAffirmation()
-    @AppStorage("selectedColor") var isColor: String!
+    private var realmManager: IRepository
     
-    //    func getRange() -> Range<Int> {
-    //        return 0...source.count-1
-    //    }
-    
+    func getArray(_ category: Category) -> [Affirmation] {
+        realmManager.filterByCategory(category: category)
+    }
+
     func chooseLanguage(item: Affirmation) -> String {
         let language = String(Locale.current.language.languageCode!.identifier)
         switch language {
@@ -29,14 +29,7 @@ final class MainScreenViewModel: ObservableObject {
         }
     }
     
-    func selectColor() -> Color {
-        switch isColor {
-        case "blue":
-            return Color.blue
-        case "red":
-            return Color.red
-        default:
-            return Color.white
-        }
+    init(realmManager: IRepository = RealmStorageManager.shared) {
+        self.realmManager = realmManager
     }
 }

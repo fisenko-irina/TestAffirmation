@@ -10,12 +10,12 @@ import RealmSwift
 
 struct CoordinatorView: View {
     
-    @StateObject private var coordinator = Coordinator()
-    @ObservedObject var appViewModel = AppViewModel()
+    @StateObject var coordinator = Coordinator()
+    @StateObject var appViewModel = AppViewModel()
    
     var body: some View {
         NavigationStack(path: $coordinator.path) {
-            coordinator.build(page: appViewModel.isLogin ? .main : .selectCategory )
+            coordinator.build(page: appViewModel.isOnboarded ? .main : .selectCategory )
                 .navigationDestination(for: Page.self) { page in
                     coordinator.build(page: page)
                 }
@@ -23,13 +23,11 @@ struct CoordinatorView: View {
                     coordinator.build(sheet: sheet)
                 }
         }.environmentObject(coordinator)
+            .environmentObject(appViewModel)
     }
     
     init() {
-        if UserDefaults.standard.bool(forKey: "isLogin") {
-            appViewModel.isLogin = false
-        }
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
+//      print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
 }
 

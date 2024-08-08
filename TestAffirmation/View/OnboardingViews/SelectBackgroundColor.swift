@@ -9,8 +9,8 @@ import SwiftUI
 
 struct SelectBackgroundColor: View {
     
-    @EnvironmentObject private var coordinator: Coordinator
-    @ObservedObject private var viewModel = AppViewModel()
+    @EnvironmentObject var coordinator: Coordinator
+    @EnvironmentObject var appViewModel: AppViewModel
     
     var body: some View {
         
@@ -20,9 +20,9 @@ struct SelectBackgroundColor: View {
                 .bold()
             
             VStack{
-                ForEach(BackgroundColor.allCases, id: \.self) { item in
+                ForEach(appViewModel.colors, id: \.self) { item in
                     showButton(text: item.localizedString()) {
-                        viewModel.isColor = "\(item)"
+                        appViewModel.backgroundColor = item
                         coordinator.push(.selectGender)
                         
                     }

@@ -70,8 +70,7 @@ class Coordinator: ObservableObject {
     func build(sheet: Sheet) -> some View {
             switch sheet {
             case .settings:
-                SettingsScreen(category: .friendship, backgroundColor: .blue, gender: .female, language: .english)
+                SettingsScreen()
             }
         }
-        
 }
